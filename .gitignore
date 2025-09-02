@@ -1,0 +1,16 @@
+# Python
+venv/
+__pycache__/
+
+# Node
+node_modules/
+
+# OS and editor
+.DS_Store
+
+# Reports and logs
+reports/
+*.log
+
+# Environment files
+.env
