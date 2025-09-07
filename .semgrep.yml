@@ -1,0 +1,46 @@
+rules:
+  - id: python-avoid-eval
+    languages: [python]
+    message: "Avoid eval() to prevent code injection."
+    severity: ERROR
+    patterns:
+      - pattern: eval($X)
+
+  - id: python-subprocess-unchecked
+    languages: [python]
+    message: "Review subprocess usage. Ensure input is validated and commands are restricted."
+    severity: WARNING
+    patterns:
+      - pattern: subprocess.run($ARGS)
+
+  - id: python-avoid-pickle
+    languages: [python]
+    message: "Avoid pickle.loads()/load() on untrusted data, remote code execution risk."
+    severity: ERROR
+    patterns:
+      - pattern-either:
+          - pattern: pickle.loads($X)
+          - pattern: pickle.load($X)
+
+  - id: python-weak-hash
+    languages: [python]
+    message: "Use a strong hash (sha256 or better). md5/sha1 are weak."
+    severity: WARNING
+    patterns:
+      - pattern-either:
+          - pattern: hashlib.md5($X)
+          - pattern: hashlib.sha1($X)
+
+  - id: python-hardcoded-password
+    languages: [python]
+    message: "Possible hardcoded secret, review and move to env vars or vault."
+    severity: WARNING
+    patterns:
+      - pattern-regex: '(?i)(password|passwd|secret|token)\s*=\s*["'\''][^"'\''\n]{4,}["'\'']'
+
+  - id: python-requests-no-verify
+    languages: [python]
+    message: "requests with verify=False disables TLS validation, avoid."
+    severity: WARNING
+    patterns:
+      - pattern: requests.$FUNC($ARGS, verify=False)

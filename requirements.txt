@@ -1,0 +1,4 @@
+Flask==0.12       # old Flask with multiple CVEs
+requests==2.19.0  # vulnerable to CVE-2018-18074
+Django==1.11.1    # end of life, many CVEs
+PyYAML==5.1       # unsafe load, CVE-2017-18342

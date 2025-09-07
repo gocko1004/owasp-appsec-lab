@@ -14,3 +14,4 @@ reports/
 
 # Environment files
 .env
+secrets/
