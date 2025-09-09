@@ -31,3 +31,11 @@ See: reports/zap_baseline.html
 - DAST: Juice Shop should show multiple issues (XSS, headers, etc.).
 
 Next step: prioritize fixes, upgrade dependencies, and re-scan to show risk reduction.
+
+## Baseline counts (before fixes)
+- Trivy FS High/Critical: PLACEHOLDER_FS_BEFORE
+- Trivy Image High/Critical: PLACEHOLDER_IMG_BEFORE
+
+## After fixes
+- Trivy FS High/Critical: PLACEHOLDER_FS_AFTER
+- Trivy Image High/Critical: PLACEHOLDER_IMG_AFTER
