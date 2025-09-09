@@ -39,3 +39,8 @@ Next step: prioritize fixes, upgrade dependencies, and re-scan to show risk redu
 ## After fixes
 - Trivy FS High/Critical: PLACEHOLDER_FS_AFTER
 - Trivy Image High/Critical: PLACEHOLDER_IMG_AFTER
+
+## Checkov severity breakdown (robust)
+{
+  "UNKNOWN": 15
+}
