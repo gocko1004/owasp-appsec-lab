@@ -44,3 +44,14 @@ Next step: prioritize fixes, upgrade dependencies, and re-scan to show risk redu
 {
   "UNKNOWN": 15
 }
+
+## ZAP Full Scan (unauthenticated)
+- HTML: reports/zap_full_unauth.html
+- JSON: reports/zap_full_unauth.json
+- XML:  reports/zap_full_unauth.xml
+
+Quick reading tips:
+- Sort by Risk. Start with High and Medium.
+- Check "Evidence" and "Instances" for reproducibility.
+- Map a few findings to OWASP Top 10 for the README.
+
