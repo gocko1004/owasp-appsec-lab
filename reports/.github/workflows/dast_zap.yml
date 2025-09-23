@@ -1,0 +1,38 @@
+name: DAST - ZAP Baseline (Juice Shop)
+
+on:
+  pull_request:
+    branches: [ "main" ]
+  push:
+    branches: [ "main" ]
+
+jobs:
+  zap:
+    runs-on: ubuntu-latest
+
+    services:
+      juice_shop:
+        image: bkimminich/juice-shop
+        ports:
+          - 3000:3000
+        options: >-
+          --health-cmd="curl -fsS http://localhost:3000 || exit 1"
+          --health-interval=10s --health-retries=12 --health-timeout=5s
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: ZAP Baseline Scan
+        uses: zaproxy/action-baseline@v0.12.0
+        with:
+          target: 'http://juice_shop:3000'
+          format: 'long'
+          cmd_options: '-d'
+          fail_action: true
+          report: 'zap_baseline.html'
+
+      - name: Upload ZAP HTML report
+        uses: actions/upload-artifact@v4
+        with:
+          name: zap-baseline-report
+          path: zap_baseline.html
